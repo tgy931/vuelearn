@@ -18,21 +18,19 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.3.0",
     "vue-template-compiler": "^2.6.12"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
+  "husky": {
+    "hooks": {
+        "pre-commit": "lint-staged",
+    }
+  },
+  "lint-staged": {
+      "src/**/*.{js,vue}": [
+          "eslint --fix",
+          "git add"
+      ]
   },
   "browserslist": [
     "> 1%",
